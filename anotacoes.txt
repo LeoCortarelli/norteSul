@@ -1,0 +1,3 @@
+Rodar o programa que você criou na package.json na linha 7 que e o dev
+comando: npm run dev
+

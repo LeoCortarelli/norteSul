@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/output.css">
+    <title>Norte a Sul Delivery</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
+         <!-- (bg-home) ele puxa a imagem Para extender a imagem de fundo ir no tailwind.config.js em extends -->
+        
+         <div class="w-full h-full flex flex-col justify-center items-center">
+            <img src="./assets/hamb-1.png" alt="Logo NS" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"/>
+            <!-- (rounded-full) deixa totalmente aredondado -->
+            <!-- (shadow-lg) Deixa uma sombra basica atras da foto -->
+            <!-- (hover:scale-110) Aumenta a imagem em 110px quando passa o mouse em cima -->
+            <!-- (duration-200) A trasição quando aumenta a imagem e de 200 milesegundos -->
+
+            <h1 class="text-4xl mt-4 mb-2 font-bold text-white">Norte a Sul</h1>
+            <!-- (MT) margin em cima -->
+            <!-- (MB) margin em baixo -->
+
+            <!-- Endereço -->
+            <span class="text-white font-medium">Rua Fecomercio Senac 123, Curitiba - PR</span>
+
+            <!-- Horario de funcionamento -->
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-4" id="date-span">
+                <span class="text-white font-medium">Seg a Dom - 18:00 as 22:00</span>
+            </div>
+        </div>
+    </header>
+    <!-- FIM HEADER -->
+
+
+    <h2 class="text-3-1 md:text-5-1 font-bold text-center mt-9 mb-6">Conheça nosso menu</h2>
+    <!-- (md:text-3-1) e uma tag que quando ele está no mobile ele deixa menor = text-2x1 e do PC ele deixa maior md:text-5x1-->
+
+
+    <!-- INICIO MENU -->
+    <div id="menu">
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-20">
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img src="./assets/acaraje.png" alt="Acaraje"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+                    <div>
+                        <!-- Titulo -->
+                        <p class="font-bold">Acarajé</p>
+
+                        <!-- Descrição -->
+                        <p class="text-sm">Delicioso bolinho frito de feijão-fradinho recheado com vatapá, caruru e camarão.</p>
+                        
+                        <!-- PREÇO E CARRINHO DE COMPRAS -->
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <!-- Preço -->
+                            <p class="font-bold text-lg">R$ 18,60</p>
+
+                            <!-- Card -->
+                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Acarajé" data-price="18,60">
+                                <!-- as propriedades do data serve para pegar o nome e o preço do produto para colocar no javaScripit -->
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>   
+                        </div>
+                    </div>
+            </div>
+            <!-- FIM PRODUTO ITEM -->
+
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img src="./assets/caboquinho.png" alt="caboquinho"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+                    <div>
+                        <!-- Titulo -->
+                        <p class="font-bold">X Caboquinho</p>
+
+                        <!-- Descrição -->
+                        <p class="text-sm">Prato amazônico com carne, legumes e temperos, cozidos em caldo rico e aromático, refletindo a diversidade culinária da região.</p>
+                        
+                        <!-- PREÇO E CARRINHO DE COMPRAS -->
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <!-- Preço -->
+                            <p class="font-bold text-lg">R$ 15,90</p>
+
+                            <!-- Card -->
+                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="X Caboquinho" data-price="15,90">
+                                <!-- as propriedades do data serve para pegar o nome e o preço do produto para colocar no javaScripit -->
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>   
+                        </div>
+                    </div>
+            </div>
+            <!-- FIM PRODUTO ITEM -->
+
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img src="./assets/moqueca.png" alt="moqueca"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+                    <div>
+                        <!-- Titulo -->
+                        <p class="font-bold">Moqueca</p>
+
+                        <!-- Descrição -->
+                        <p class="text-sm">Moqueca, prato brasileiro, apresenta peixe ou frutos do mar cozidos lentamente em molho de tomate, leite de coco e temperos regionais, resultando em sabor exótico e aroma irresistível.</p>
+                        
+                        <!-- PREÇO E CARRINHO DE COMPRAS -->
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <!-- Preço -->
+                            <p class="font-bold text-lg">R$ 22,90</p>
+
+                            <!-- Card -->
+                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Moqueca" data-price="22,90">
+                                <!-- as propriedades do data serve para pegar o nome e o preço do produto para colocar no javaScripit -->
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>   
+                        </div>
+                    </div>
+            </div>
+            <!-- FIM PRODUTO ITEM -->
+
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img src="./assets/pato_tucupi.png" alt="pato_tucupi"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+                    <div>
+                        <!-- Titulo -->
+                        <p class="font-bold">Pato no Tucupi</p>
+
+                        <!-- Descrição -->
+                        <p class="text-sm">Pato cozido lentamente em tucupi amarelo, caldo ácido e picante de mandioca, típico da culinária paraense, com sabor marcante e aroma inconfundível.</p>
+                        
+                        <!-- PREÇO E CARRINHO DE COMPRAS -->
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <!-- Preço -->
+                            <p class="font-bold text-lg">R$ 45,90</p>
+
+                            <!-- Card -->
+                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Pato no Tucupi" data-price="45,90">
+                                <!-- as propriedades do data serve para pegar o nome e o preço do produto para colocar no javaScripit -->
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>   
+                        </div>
+                    </div>
+            </div>
+            <!-- FIM PRODUTO ITEM -->
+
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img src="./assets/tambaqui.png" alt="tambaqui"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+                    <div>
+                        <!-- Titulo -->
+                        <p class="font-bold">Tambaqui</p>
+
+                        <!-- Descrição -->
+                        <p class="text-sm">Tambaqui grelhado, peixe típico da Amazônia, com carne suculenta e saborosa, acompanhado de molho de tucupi e farofa d'água, uma iguaria regional irresistível.</p>
+                        
+                        <!-- PREÇO E CARRINHO DE COMPRAS -->
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <!-- Preço -->
+                            <p class="font-bold text-lg">R$ 60,90</p>
+
+                            <!-- Card -->
+                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Tambaqui" data-price="60,90">
+                                <!-- as propriedades do data serve para pegar o nome e o preço do produto para colocar no javaScripit -->
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>   
+                        </div>
+                    </div>
+            </div>
+            <!-- FIM PRODUTO ITEM -->
+
+            <!-- PRODUTO ITEM -->
+            <div class="flex gap-2">
+                <img src="./assets/tacaca.png" alt="tacaca"
+                    class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"/>
+                    <div>
+                        <!-- Titulo -->
+                        <p class="font-bold">Tacaca</p>
+
+                        <!-- Descrição -->
+                        <p class="text-sm">Tacacá, caldo quente de tucupi com goma de mandioca, camarão seco e jambu, prato amazônico marcante por seu sabor único e aroma envolvente.</p>
+                        
+                        <!-- PREÇO E CARRINHO DE COMPRAS -->
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <!-- Preço -->
+                            <p class="font-bold text-lg">R$ 58,90</p>
+
+                            <!-- Card -->
+                            <button class="bg-gray-900 px-5 rounded add-to-cart-btn" data-name="Tacaca" data-price="58,90">
+                                <!-- as propriedades do data serve para pegar o nome e o preço do produto para colocar no javaScripit -->
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>   <!-- Parou no 41:03 -->
+                        </div>
+                    </div>
+            </div>
+            <!-- FIM PRODUTO ITEM -->
+        </main>
+    </div>
+    <!-- FIM MENU -->
+</body>
+</html>
