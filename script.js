@@ -13,6 +13,7 @@ let cart = [];
 
 // ABRIR O MODAL DO CARRINHO
 cartBtn.addEventListener("click", function(){
+    updateCartModal();
     cartModal.style.display = "flex";
 });
 
@@ -54,14 +55,55 @@ function addToCard(name, price){
 
     if(existingItem){
         // Se o item ja existi ele aumenta a quantidade + 1
-        console.log(existingItem);
-        return;
-        // PAROU 31:27
+        existingItem.quantity += 1;
+    }else{
+        cart.push({
+            name,
+            price,
+            quantity: 1,
+        });
     }
 
-    cart.push({
-        name,
-        price,
-        quantity: 1,
-    });
+    updateCartModal();
 }
+
+
+// ATUALIZA CARRINHO
+function updateCartModal(){
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => {
+        const cartItemElement = document.createElement("div"); // Adcionando uma div
+        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col") // Estilizando a div
+
+        cartItemElement.innerHTML = `
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-medium">${item.name}</p>
+                    <p>Qtd: ${item.quantity}</p>
+                    <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                </div>
+                
+                <button class="remove-from-cart-btn" data-name="${item.name}"> Remover </button>
+            </div>
+        `
+
+        total = total + (item.price * item.quantity);
+
+        cartItemsContainer.appendChild(cartItemElement); // Colocando os elemnetos dentro da div
+    })
+
+    cartTotal.textContent = total.toLocaleString("pt-BR", { // Colocando em formato portugues brasil
+        style: "currency",
+        currency: "BRL"
+    })
+
+    cartCounter.innerHTML = cart.length; // Muda o numero da quantidade de coisas no carrinho
+}
+
+
+// FUNÇÃO PARA REMOVER O ITEM DO CARRINHO
+cartItemsContainer.addEventListener("click", function(){ // parou no 53:29
+
+})
