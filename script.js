@@ -103,7 +103,52 @@ function updateCartModal(){
 }
 
 
-// FUNÇÃO PARA REMOVER O ITEM DO CARRINHO
-cartItemsContainer.addEventListener("click", function(){ // parou no 53:29
+// REMOVER O ITEM DO CARRINHO
+cartItemsContainer.addEventListener("click", function(event){ // parou no 53:29
+    if(event.target.classList.contains("remove-from-cart-btn")){
+        const name = event.target.getAttribute("data-name");
 
+        removeItemCart(name);
+    }
 })
+
+// Função para remover item
+function removeItemCart(name){
+    const index = cart.findIndex(item => item.name === name); 
+    /* findIndex é utilizado para retornar o índice do primeiro elemento em um array 
+        que satisfaça uma determinada condição provida por uma função de callback. Se nenhum elemento 
+        satisfizer a condição, o método retornará -1. */
+
+    if(index !== -1){
+        const item = cart[index];
+        if(item.quantity > 1){
+            item.quantity = item.quantity - 1;
+            updateCartModal();
+            return;
+        }
+
+        cart.splice(index, 1); // O splice e uma tag que vai remover esse item da minha lista
+        updateCartModal(); // Atualisza o visual do carrinho
+    }
+}
+
+addressInput.addEventListener("input", function(event){
+    let inputValue = event.target.value;
+});
+
+
+// Checando o botão de finalizar pedido
+checkoutBtn.addEventListener("click", function(){
+    
+    // Se o seu carrinho estiver vazio ele não vai fazer nada
+    if(cart.length === 0){
+        return;
+    }
+
+    if(addressInput.value === ""){
+        addressWarn.classList.remove("hidden"); // Aparece o texto que para digitar novamente
+        addressInput.classList.add("border-red-500"); // Deixa a borda do input vermelha
+    } // PAROU 1:03:02
+
+
+});
