@@ -64,7 +64,7 @@ function addToCard(name, price){
         });
     }
 
-    updateCartModal();
+    updateCartModal(); // Atualizando o carrinho
 }
 
 
@@ -89,6 +89,7 @@ function updateCartModal(){
             </div>
         `
 
+        // Atualizando o Total 
         total = total + (item.price * item.quantity);
 
         cartItemsContainer.appendChild(cartItemElement); // Colocando os elemnetos dentro da div
@@ -104,7 +105,7 @@ function updateCartModal(){
 
 
 // REMOVER O ITEM DO CARRINHO
-cartItemsContainer.addEventListener("click", function(event){ // parou no 53:29
+cartItemsContainer.addEventListener("click", function(event){
     if(event.target.classList.contains("remove-from-cart-btn")){
         const name = event.target.getAttribute("data-name");
 
