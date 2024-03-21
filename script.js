@@ -135,12 +135,37 @@ function removeItemCart(name){
 
 addressInput.addEventListener("input", function(event){
     let inputValue = event.target.value;
+
+    // Quando o usuario começar a digitar ele tira a linha e o aviso em vermelho
+    if(inputValue !== ""){
+        addressInput.classList.remove("border-red-500"); // Removendo a borda vermelha
+        addressWarn.classList.add("hidden"); // Escondendo a div do aviso 
+    }
 });
 
 
 // Checando o botão de finalizar pedido
 checkoutBtn.addEventListener("click", function(){
     
+    const isOpen = checkRestauranteOpem();
+    if(!isOpen){
+        Toastify({
+            text: "Os restaurantes estão fechados",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "#ef4444",
+            },
+        }).showToast();
+
+        return;
+    }
+
+
+
     // Se o seu carrinho estiver vazio ele não vai fazer nada
     if(cart.length === 0){
         return;
@@ -149,7 +174,42 @@ checkoutBtn.addEventListener("click", function(){
     if(addressInput.value === ""){
         addressWarn.classList.remove("hidden"); // Aparece o texto que para digitar novamente
         addressInput.classList.add("border-red-500"); // Deixa a borda do input vermelha
-    } // PAROU 1:03:02
+        return;
+    }
 
 
+    // Enviar pedido para a api do wats
+    const cartItems = cart.map((item) =>{
+        return(
+            `${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} | `
+        )
+    }).join(""); // o .join transforma o array em uma string
+
+    const message = encodeURIComponent(cartItems);
+    const phone = "41997419059"
+
+    window.open(`"https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+
+    cart = []; // Limpando o carrinho
+    updateCartModal(); // Atualizando o carrinho
 });
+
+
+// Verificando se os restaurantes estão em horario de funcionamento
+// Verifica a hora e manipula o card do horario
+function checkRestauranteOpem(){
+    const data = new Date(); // O new Date vai gerar a data de hoje 
+    const hora = data.getHours(); // devolve a hora atual
+    return hora >= 18 && hora <= 22; // ele vai devolver com true quer dizer que ele está aberto
+}
+
+const spanItem = document.getElementById("date-span");
+const isOpen = checkRestauranteOpem();
+
+if(isOpen){
+    spanItem.classList.remove("bg-red-500");
+    spanItem.classList.add("bg-green-600");
+}else{
+    spanItem.classList.remove("bg-green-600");
+    spanItem.classList.add("bg-red-500");
+}
