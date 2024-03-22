@@ -148,7 +148,7 @@ addressInput.addEventListener("input", function(event){
 checkoutBtn.addEventListener("click", function(){
     
     const isOpen = checkRestauranteOpem();
-    if(!isOpen){
+    if(isOpen){
         Toastify({
             text: "Os restaurantes estão fechados",
             duration: 3000,
@@ -200,16 +200,17 @@ checkoutBtn.addEventListener("click", function(){
 function checkRestauranteOpem(){
     const data = new Date(); // O new Date vai gerar a data de hoje 
     const hora = data.getHours(); // devolve a hora atual
-    return hora >= 18 && hora <= 22; // ele vai devolver com true quer dizer que ele está aberto
+    return hora >= 17 && hora <= 4; // ele vai devolver com true quer dizer que ele está aberto
 }
 
 const spanItem = document.getElementById("date-span");
 const isOpen = checkRestauranteOpem();
 
 if(isOpen){
-    spanItem.classList.remove("bg-red-500");
-    spanItem.classList.add("bg-green-600");
-}else{
     spanItem.classList.remove("bg-green-600");
     spanItem.classList.add("bg-red-500");
+}else{
+    spanItem.classList.add("bg-green-600");
+    spanItem.classList.remove("bg-red-500");
 }
+
