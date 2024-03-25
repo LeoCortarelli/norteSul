@@ -1,3 +1,12 @@
+npm init -y ( Ele inicializa a configuração do node.js dentro do projeto )
+
+INSTALANDO O TAILWIND 
+https://tailwindcss.com/docs/installation
+
+Colocar comandos no cmd
+npm install -D tailwindcss
+npx tailwindcss init
+
 Rodar o programa que você criou na package.json na linha 7 que e o dev
 comando: npm run dev
 
